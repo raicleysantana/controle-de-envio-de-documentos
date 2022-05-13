@@ -18,7 +18,7 @@
                         <th>#</th>
                         <th>Sigla</th>
                         <th>Descrição</th>
-                        <th>Ações</th>
+                        <th style="width: 30%">Ações</th>
                     </tr>
                     </thead>
                     <tbody>

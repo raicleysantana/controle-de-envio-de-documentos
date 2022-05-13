@@ -20,7 +20,7 @@
                         <th>Título</th>
                         <th>Tipo de documento</th>
                         <th>Data de Criação</th>
-                        <th>Ações</th>
+                        <th style="width: 30%">Ações</th>
                     </tr>
                     </thead>
                     <tbody>
