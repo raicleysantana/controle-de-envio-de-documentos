@@ -8,47 +8,70 @@
 
         <div class="card mt-4">
             <div class="card-body">
-                <div class="float-end">
+                <div class="d-flex flex-row justify-content-end">
                     <a href="/tramitacao/tramitar" class="btn btn-outline-success">Tramitar documento</a>
                 </div>
 
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Número documento</th>
-                        <th>Título</th>
-                        <th>Setor Envio</th>
-                        <th>Data Hora envio</th>
-                        <th>Setor recebeu</th>
-                        <th>Data Hora recebeu</th>
-                        <th>Ações</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($tramitacao_documento as $tramitacao)
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td class="fw-bold">{{ $tramitacao->documento->numero_documento }}</td>
-                            <td>{{ $tramitacao->documento->titulo }}</td>
-                            <td>{{ $tramitacao->setorEnvio->descricao }}</td>
-                            <td>{{ date('d/m/Y H:m', strtotime($tramitacao->data_hora_envio)) }}</td>
-                            <td>{{ $tramitacao->setorRecebe ? $tramitacao->setorRecebe->descricao : '' }}</td>
-                            <td>{{ $tramitacao->data_hora_recebe }}</td>
-                            <td>
-                                <a
-                                    href="/tramitacao/receber/{{$tramitacao->id}}"
-                                    class="btn btn-outline-primary btn-sm me-1 d-inline">
-                                    Receber
-                                </a>
-                                <a
-                                    href="/documento/editar/{{$tramitacao->id}}"
-                                    class="btn btn-outline-warning btn-sm me-1 d-inline">
-                                    Enviar
-                                </a>
-                            </td>
+                            <th>Número documento</th>
+                            <th>Título</th>
+                            <th>Setor Envio</th>
+                            <th>Data Hora envio</th>
+                            <th>Setor recebeu</th>
+                            <th>Data Hora recebeu</th>
+                            <th>Situação</th>
+                            <th>Ações</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach($tramitacao_documento as $tramitacao)
+                            <tr>
+                                <td class="fw-bold">
+                                    {{ $tramitacao->documento->numero_documento }}
+                                </td>
+                                <td>
+                                    {{ $tramitacao->documento->titulo }}
+                                </td>
+                                <td>
+                                    {{ $tramitacao->setorEnvio->descricao }}
+                                </td>
+                                <td>
+                                    {{ date('d/m/Y H:i', strtotime($tramitacao->data_hora_envio)) }}
+                                </td>
+                                <td>
+                                    {{ $tramitacao->setorRecebe ? $tramitacao->setorRecebe->descricao : '' }}
+                                </td>
+                                <td>
+                                    {{ $tramitacao->data_hora_recebe ?  date('d/m/Y H:i', strtotime($tramitacao->data_hora_recebe)): '' }}
+                                </td>
+                                <td>
+                                    {{ $tramitacao->situacao ? ucfirst($tramitacao->situacao): 'Pendente' }}
+                                </td>
+                                <td>
+                                    @if(!$tramitacao->data_hora_recebe)
+                                        <a
+                                            href="/tramitacao/receber/{{$tramitacao->id}}"
+                                            class="btn btn-outline-success btn-sm me-1 d-inline">
+                                            Receber
+                                        </a>
+                                    @endif
+
+                                    @if($tramitacao->data_hora_recebe and $tramitacao->situacao == '')
+                                        <a
+                                            href="/tramitacao/enviar/{{$tramitacao->id}}"
+                                            class="btn btn-outline-warning btn-sm me-1 d-inline">
+                                            Enviar
+                                        </a>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

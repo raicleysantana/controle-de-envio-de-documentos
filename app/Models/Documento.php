@@ -9,7 +9,7 @@ class Documento extends Model
 {
     use HasFactory;
 
-    protected $table = "documento";
+    protected $table = "documentos";
 
     protected $guarded = [];
 
@@ -20,7 +20,7 @@ class Documento extends Model
 
     public function tramitacaoDocumento()
     {
-        return $this->belongsTo('App\Models\TramitacaoDocumento', 'id', 'documento_id');
+        return $this->hasMany('App\Models\TramitacaoDocumento', 'documento_id', 'id');
     }
 
     public function getDataCriacao()
@@ -33,5 +33,11 @@ class Documento extends Model
         return storage_path("app/public/documentos/{$this->arquivo}");
     }
 
+    public function getTotalTramitacao()
+    {
+        return $this->hasMany('App\Models\TramitacaoDocumento', 'documento_id', 'id')
+            ->where('documento_id', '=', $this->id)->count();
+
+    }
 
 }

@@ -19,10 +19,18 @@ class SiteController extends Controller
         $dados = [];
 
         if ($search) {
+            /*$dados = DB::table('tramitacao_documento', 'td')
+                ->join('documentos', 'td.documento_id', '=', 'documentos.id')
+                ->where([['documentos.numero_documento', 'like', "'%{$search}%'"]])
+                ->select('documentos.*')
+                ->get();*/
+
+
             $dados = DB::table('tramitacao_documento', 'td')
-                ->join('documento', 'td.documento_id', '=', 'documento.id')
-                ->where([['documento.numero_documento', 'like', "%{$search}%"]])
-                ->select('documento.*')
+                ->select('documentos.*')
+                ->leftJoin('documentos', 'td.documento_id', '=', 'documentos.id')
+                ->where('documentos.numero_documento', 'like', '%' . $search . '%')
+                ->groupBy('td.documento_id')
                 ->get();
         }
 

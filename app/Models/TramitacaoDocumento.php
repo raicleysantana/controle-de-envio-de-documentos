@@ -9,6 +9,9 @@ class TramitacaoDocumento extends Model
 {
     use HasFactory;
 
+    const RECEBIDO = 'recebido';
+    const PENDENTE = 'pendente';
+
     protected $table = "tramitacao_documento";
 
     public function setorRecebe()

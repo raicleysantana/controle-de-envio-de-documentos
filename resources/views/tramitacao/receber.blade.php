@@ -25,11 +25,45 @@
                     {{ $tramitacaoDocumento->documento->numero_documento.' - '.$tramitacaoDocumento->documento->titulo }}
                 </td>
             </tr>
+            <tr>
+                <td style="width: 20%">Descrição</td>
+                <td>{{ $tramitacaoDocumento->documento->descricao }}</td>
+            </tr>
         </table>
 
-        <form action="/tramitacao/confirmar">
+        <form id="form-confirmar" action="/tramitacao/confirmar/{{ $tramitacaoDocumento->id }}" method="POST">
             @csrf
-            <button class="btn btn-outline-success" type="submit">Confirmar recebimento</button>
+            @method('PUT')
+
+            <button
+                class="btn btn-success confirmar"
+                type="button">
+                Confirmar recebimento
+            </button>
         </form>
     </div>
+
+    <script>
+        $(function () {
+            $(".confirmar").click(function () {
+                $.alert({
+                    title: false,
+                    content: 'Confirmar recebimento?',
+                    buttons: {
+                        sim: {
+                            text: 'sim',
+                            action: function () {
+                                $(`#form-confirmar`).submit();
+                            },
+                        },
+                        nao: {
+                            text: 'Não',
+                            action: function () {
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

@@ -29,8 +29,7 @@
                 <thead>
                 <th>Número documento</th>
                 <th>Titulo</th>
-                <th></th>
-                <th></th>
+                <th>Ações</th>
                 </thead>
                 <tbody>
                 @foreach($dados as $dado)
@@ -39,13 +38,17 @@
                             <a href="/documento/visualizar/{{ $dado->id }}">{{ $dado->numero_documento }}</a>
                         </td>
                         <td>{{ $dado->titulo }}</td>
-                        <td></td>
-                        <td></td>
+                        <td>
+                            <a
+                                href="/tramitacao/tramitacoes/{{ $dado->id }}"
+                                class="btn btn-outline-success btn-sm">
+                                Tramitações
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-
         @else
             <p>Nenhum resultado encontrado</p>
         @endif

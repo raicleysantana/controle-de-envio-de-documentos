@@ -97,4 +97,5 @@ class DocumentoController extends Controller
 
         return response()->download($destino, $arquivo);
     }
+
 }

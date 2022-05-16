@@ -9,7 +9,7 @@ class Setor extends Model
 {
     use HasFactory;
 
-    protected $table = "setor";
+    protected $table = "setores";
 
     protected $guarded = [];
 }

@@ -23,12 +23,12 @@ class CreateTramitacaoDocumentoTable extends Migration
 
             $table->foreign('setor_envio_id')
                 ->references('id')
-                ->on('setor')
+                ->on('setores')
                 ->onDelete('cascade');
 
             $table->foreign('setor_recebe_id')
                 ->references('id')
-                ->on('setor')
+                ->on('setores')
                 ->onDelete('cascade');
 
             $table->timestamps();

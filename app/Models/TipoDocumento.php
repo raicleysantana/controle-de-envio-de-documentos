@@ -9,7 +9,7 @@ class TipoDocumento extends Model
 {
     use HasFactory;
 
-    protected $table = "tipo_documento";
+    protected $table = "tipos_documento";
 
     protected $guarded = [];
 

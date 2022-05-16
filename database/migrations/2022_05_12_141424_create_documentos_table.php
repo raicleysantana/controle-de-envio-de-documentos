@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDocumentoTable extends Migration
+class CreateDocumentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDocumentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('documento', function (Blueprint $table) {
+        Schema::create('documentos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('numero_documento', 10);
             $table->string('titulo', 40);
@@ -24,7 +24,7 @@ class CreateDocumentoTable extends Migration
 
             $table->foreign('tipo_documento_id')
                 ->references('id')
-                ->on('tipo_documento')
+                ->on('tipos_documento')
                 ->onDelete('cascade');
 
             $table->timestamps();
@@ -39,6 +39,6 @@ class CreateDocumentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documento');
+        Schema::dropIfExists('documentos');
     }
 }

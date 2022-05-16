@@ -46,7 +46,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button
-                                        type="type"
+                                        type="button"
                                         data-id="{{$setor->id}}"
                                         class="btn btn-outline-danger btn-sm btn-deletar">
                                         Excluir

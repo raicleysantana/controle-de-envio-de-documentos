@@ -28,7 +28,6 @@ Route::delete('/setor/{id}', [SetorController::class, 'deletar']);
 Route::get('/setor/editar/{id}', [SetorController::class, 'editar']);
 Route::put('/setor/atualizar/{id}', [SetorController::class, 'atualizar']);
 
-
 Route::get('/tipo_documento', [TipoDocumentoController::class, 'index']);
 Route::get('/tipo_documento/visualizar/{id}', [TipoDocumentoController::class, 'visualizar']);
 Route::get('/tipo_documento/criar', [TipoDocumentoController::class, 'criar']);
@@ -36,7 +35,6 @@ Route::post('/tipo_documento', [TipoDocumentoController::class, 'registrar']);
 Route::delete('/tipo_documento/{id}', [TipoDocumentoController::class, 'deletar']);
 Route::get('/tipo_documento/editar/{id}', [TipoDocumentoController::class, 'editar']);
 Route::put('/tipo_documento/atualizar/{id}', [TipoDocumentoController::class, 'atualizar']);
-
 
 Route::get('/documento', [DocumentoController::class, 'index']);
 Route::get('/documento/visualizar/{id}', [DocumentoController::class, 'visualizar']);
@@ -52,3 +50,7 @@ Route::get('/tramitacao/tramitar', [TramitacaoDocumentoController::class, 'trami
 Route::get('/tramitacao/setor', [TramitacaoDocumentoController::class, 'setorJson']);
 Route::POST('/tramitacao', [TramitacaoDocumentoController::class, 'cadastrar']);
 Route::get('/tramitacao/receber/{id}', [TramitacaoDocumentoController::class, 'receber']);
+Route::put('/tramitacao/confirmar/{id}', [TramitacaoDocumentoController::class, 'confirmar']);
+Route::get('/tramitacao/enviar/{id}', [TramitacaoDocumentoController::class, 'enviar']);
+Route::put('/tramitacao/enviar_tramitacao/{id}', [TramitacaoDocumentoController::class, 'enviar_tramitacao']);
+Route::get('/tramitacao/tramitacoes/{id}', [TramitacaoDocumentoController::class, 'tramitacoes']);

@@ -27,9 +27,9 @@
     }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">Solasstec</a>
+        <a class="navbar-brand" href="/">SOLASSTEC</a>
         <button
             class="navbar-toggler"
             type="button"
